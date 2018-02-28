@@ -41,7 +41,7 @@ class TrialCars extends Component {
     render() {
         const trialCars = this.props.trialCars
         let list;
-        if (trialCars && trialCars.payload) {
+        if (trialCars.loding) {
             list = trialCars.payload.map((item, i) => (
                 <Link key={i} to={
                     {pathname: 'trial_cars/'+item.id , query:{foo: 'bar', boo:'boz'}, state:{item} }

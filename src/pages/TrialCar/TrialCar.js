@@ -19,7 +19,7 @@ class TrialCars extends Component {
     render() {
         const trialCar =this.props.trialCar
 
-        if (trialCar && trialCar.payload) {
+        if (trialCar.loding) {
             return (
                 <div className="trial-car">
                     <NavBar

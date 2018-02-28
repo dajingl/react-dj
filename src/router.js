@@ -1,8 +1,8 @@
 import React, { Component }  from 'react';
 import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom'
-import Home from './pages/Home/';
-import TrialCars from './pages/TrialCars/';
-import TrialCar from './pages/TrialCar/';
+import Home from './pages/Home/Home';
+import TrialCars from './pages/TrialCars/TrialCars';
+import TrialCar from './pages/TrialCar/TrialCar';
 // import Login from './containers/Login/Login';
 
 
