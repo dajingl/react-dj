@@ -16,7 +16,7 @@ export default class Find extends Component {
                 <NavBar
                     mode="light"
                 >Find</NavBar>
-                <div class="content">
+                <div className="content">
                     <List>
                         <Item
                             thumb="https://zos.alipayobjects.com/rmsportal/dNuvNrtqUztHCwM.png"

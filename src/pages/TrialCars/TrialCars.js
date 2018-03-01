@@ -23,20 +23,6 @@ class TrialCars extends Component {
     }
 
 
-   toDo(item) {
-       console.log(item)
-        switch (item) {
-            case 'kan':
-                return  "dadas";
-            case 'Contact':
-                return 'sdsa';
-            case 'Find':
-                return 'adad';
-            default:
-                return 'dda1123s';
-        };
-    }
-
 
     render() {
         const trialCars = this.props.trialCars

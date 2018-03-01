@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { NavBar, Icon,  List} from 'antd-mobile';
+import { NavBar, Icon,  List, Tag} from 'antd-mobile';
 import { get_trial_car } from '../../store/trialcar/action';
 import './TrialCar.less';
+import { IsCarousel } from '../../components/Carousel/Carousel';
+import { Button, WhiteSpace, WingBlank } from 'antd-mobile';
+
+import {Flow} from './flow'
 
 
 class TrialCars extends Component {
@@ -11,15 +15,17 @@ class TrialCars extends Component {
     }
 
     componentWillMount() {
-      this.props.get_trial_car(this.props.match.params.id)
+        this.props.get_trial_car(this.props.match.params.id)
     }
 
 
 
-    render() {
-        const trialCar =this.props.trialCar
 
-        if (trialCar.loding) {
+    render() {
+        const trialCar =this.props.trialCar;
+        const data = trialCar.payload;
+        console.log(trialCar)
+        if (trialCar.loading) {
             return (
                 <div className="trial-car">
                     <NavBar
@@ -30,7 +36,39 @@ class TrialCars extends Component {
                             <Icon key="1" type="ellipsis" />
                         ]}
                     >试驾</NavBar>
+
                     <div className="content">
+                        <div>
+                            <div className="title">
+                                <span>{data.displayName}</span>
+                                <p className="font-style">{data.subTitle}</p>
+                            </div>
+
+                            <IsCarousel data = {data.images}/>
+
+                            <div className="prompt">
+                                <span>¥{data.price}</span>
+                                <Tag small>{data.couponName}</Tag>
+                                <p className="font-style">预约有效期至:{data.expiredDate}</p>
+                                <p className="font-style">指导价: {data.guide}</p>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h4>经销商信息</h4>
+                            <p className="font-style">{data.carShopName}</p>
+                            <p className="font-style">{data.address}</p>
+                        </div>
+
+                        <div>
+                            <Flow/>
+                        </div>
+
+                        <div className="Car-shop">
+                            <h4>经销商信息</h4>
+                        </div>
+
+                        <Button type="primary"  >抢订试驾</Button>
                     </div>
                 </div>
 
@@ -56,7 +94,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = {
-     get_trial_car
+    get_trial_car
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TrialCars);
