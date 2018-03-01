@@ -9,13 +9,6 @@ export function loginSuccess(data) {
     }
 }
 
-export function loginding(data) {
-    return {
-        type: login.LOG_ING,
-        payload: data
-    }
-}
-
 export function loginErr(data) {
     return {
         type: login.LOG_ERR,

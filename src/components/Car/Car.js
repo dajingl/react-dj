@@ -32,7 +32,7 @@ export default class Car extends Component {
         const subList = this.props.list
         let list;
 
-        if (subList && subList.payload) {
+        if (subList.loading) {
             list = subList.payload.map((item, i) => (
                 <Link key={i} to={this.pushTo(item.name)} >
                     <Item key={i} extra={item.latestMsgAt} align="top" thumb={"http://qiniu-cdn.carhot.cn/"+item.logo} multipleLine>
@@ -40,21 +40,36 @@ export default class Car extends Component {
                     </Item>
                 </Link>
             ))
+
+            return (
+                <div className= 'car'>
+                    <NavBar
+                        mode="light"
+                    >Car</NavBar>
+
+                    <div className="content">
+                        <List>
+                            {list}
+                        </List>
+                    </div>
+                </div>
+            )
+        } else {
+
+            return (
+                <div className= 'car'>
+                    <NavBar
+                        mode="light"
+                    >Car</NavBar>
+
+                    <div className="content">
+
+                    </div>
+                </div>
+            )
         }
 
 
-        return (
-            <div className= 'car'>
-                <NavBar
-                    mode="light"
-                >Car</NavBar>
 
-            <div className="content">
-                <List>
-                    {list}
-                </List>
-            </div>
-            </div>
-        )
     }
 }

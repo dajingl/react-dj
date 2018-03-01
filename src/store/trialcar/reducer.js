@@ -12,8 +12,6 @@ export default function trialCar(state = defaultState , action = {}) {
             return Object.assign({}, ...state, {payload: action.payload, loading: true});
         case trialcar.GET_TRIAL_CAR_ERR:
              return Object.assign({}, ...state, {payload: action.payload});
-        case trialcar.GET_TRIAL_CAR_ING:
-            return Object.assign({}, ...state, {payload: action.payload});
         default :
             return defaultState;
     }

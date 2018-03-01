@@ -14,12 +14,6 @@ export function subscriptionsSuccess(data) {
     }
 }
 
-// export function subscriptionsErr(data) {
-//     return {
-//         type: subscriptions.GET_SUBSCRIPTION_LIST_ERR,
-//         payload: data
-//     }
-// }
 
 export function get_sub_list (){
     return dispatch=>{
