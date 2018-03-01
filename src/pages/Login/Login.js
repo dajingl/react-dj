@@ -1,6 +1,7 @@
 import React,{ Component } from 'react'
 import { log_in } from '../../store/login/action';
 import { connect } from 'react-redux';
+import { List, InputItem } from 'antd-mobile';
 import  './Login.less'
 
 class Login extends Component {
@@ -9,7 +10,6 @@ class Login extends Component {
         this.state = {
             userName: "",
             userPassword: "",
-            isRemember: false,
             unameHelp: "",
             upwdHelp: ""
         }
@@ -29,13 +29,16 @@ class Login extends Component {
         })
     }
 
-    //点击登录按钮，触发后台接口提供的验证，对数据的处理等方法
+    //点击登录按钮，触发后台接口提供的验证，对数据的处理等方法y
     handleClick(){
+
+        // let phoneReg = /^1[3-578]\d{9}$/;
+
         if(this.state.userName === ""||this.state.userName === null){
             this.setState({
                 unameHelp: "* 用户名不能为空"
             })
-        }else if(this.state.userPassword === ""||this.state.userPassword === null){
+        } else if(this.state.userPassword === ""||this.state.userPassword === null){
             this.setState({
                 unameHelp: "",
                 upwdHelp: "* 密码不能为空"
@@ -46,11 +49,16 @@ class Login extends Component {
                 upwdHelp: ""
             });
 
-            this.props.login(this.state.userName,this.state.userPassword);
-            console.log(this.state);
+            this.props.log_in(this.state.userName,this.state.userPassword);
+            console.log(this.state+1);
         }
     }
     render(){
+        console.log(this.props)
+        if(this.props.currentUser.loading) {
+            this.props.history.push('/Home');
+        }
+
         return (
             <div className="login-box">
                 ​
@@ -72,7 +80,7 @@ class Login extends Component {
                     ​
                     ​
                     <div className="form-group">
-                        <button type="button" onClick={this.handleClick.bind(this,this.state.userName,this.state.userPassword)} className="btn btn-primary login-btn">登录</button>
+                        <button type="button" onClick={() =>this.handleClick(this.state.userName,this.state.userPassword)} className="btn btn-primary login-btn">登录</button>
                     </div>
                 </form>
                 ​

@@ -61,7 +61,8 @@ class TrialCars extends Component {
                     <NavBar
                         mode="light"
                     >试驾</NavBar>
-
+                    <div className="content">
+                    </div>
 
                 </div>
             );

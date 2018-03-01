@@ -10,7 +10,7 @@ export function trialCarsSuccess(data) {
 
 export function get_trial_cars_list (){
     return dispatch=>{
-        fetch('http://carhot.cn/api/trial_cars?format=json&&page=1').then((res) => {
+        fetch('http://dj:3000/api/trial_cars?format=json&&page=1').then((res) => {
             return res.json();
         }).then((res) => {
             dispatch(trialCarsSuccess(res.data))

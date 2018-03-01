@@ -17,7 +17,7 @@ export function subscriptionsSuccess(data) {
 
 export function get_sub_list (){
     return dispatch=>{
-        fetch('http://carhot.cn/api//subscriptions?format=json&page=1').then((res) => {
+        fetch('http://dj:3000/api//subscriptions?format=json&page=1').then((res) => {
             return res.json();
         }).then((res) => {
             dispatch(subscriptionsSuccess(res.data))

@@ -17,14 +17,21 @@ export function loginErr(data) {
 }
 
 
-export function log_in (obj){
+export function log_in (phone,code){
     return dispatch=>{
-        if (obj.userName === 'dj' && obj.password === '123') {
-            console.log('登录成功')
-            dispatch(loginSuccess(...obj))
-        } else {
-            dispatch(loginErr({isLogin: false, info: '账号或密码错误'}))
-        }
+        fetch(`http://dj:3000/api/consumer?phone=${phone}&code=${code}`, {
+            method:'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }}).then((res) => {
+            return res.json();
+        }).then((res) => {
+            console.log(res)
+            dispatch(loginSuccess(res))
+        }).catch((error) =>{
+            // dispatch(loginErr())
+        })
     }
 }
 

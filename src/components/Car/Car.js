@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { NavBar, Icon,  List} from 'antd-mobile';
 import { Link} from 'react-router-dom';
 import './Car.less'
-
 const Item = List.Item;
 const Brief = Item.Brief;
 export default class Car extends Component {
@@ -36,7 +35,7 @@ export default class Car extends Component {
         if (subList.loading) {
             list = subList.payload.map((item, i) => (
                 <Link key={i} to={this.pushTo(item.name)} >
-                    <Item key={i} extra={item.latestMsgAt} align="top" thumb={"http://qiniu-cdn.carhot.cn/"+item.logo} multipleLine>
+                    <Item key={i} extra={item.latestMsgAt} align="top" thumb={require('../../'+item.logo)} multipleLine>
                         {item.name} <Brief>{item.latestMsg}</Brief>
                     </Item>
                 </Link>
@@ -64,7 +63,6 @@ export default class Car extends Component {
                     >Car</NavBar>
 
                     <div className="content">
-
                     </div>
                 </div>
             )

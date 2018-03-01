@@ -31,7 +31,7 @@ export default class Me extends Component {
                                 thumb="https://zos.alipayobjects.com/rmsportal/dNuvNrtqUztHCwM.png"
                                 multipleLine
                             >
-                                {user ? user.displayName : '登录吧'} <Brief> 看车号: {user ? user.displayName : '12345'}  </Brief>
+                                {user ? user.phone : '登录吧'} <Brief> 看车号: {user ? user : '12345'}  </Brief>
                             </Item>
                         </Link>
 
