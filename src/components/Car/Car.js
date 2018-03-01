@@ -13,18 +13,19 @@ export default class Car extends Component {
 
     pushTo(item) {
         console.log(item)
-        switch (item.name)
+        switch (item)
         {
             case '试驾':
-                return 'trial_car';
+                console.log(1)
+                return '/trial_cars' ;
             case '车商城':
-                return '2';
+                return '/2';
             case '车头条':
-                return '3';
+                return '/3';
             case '我的订单':
-                return '4';
+                return '/4';
             default:
-                return 'trial_cars'
+                return '/trial_cars'
         }
     }
 

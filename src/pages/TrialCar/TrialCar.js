@@ -18,13 +18,20 @@ class TrialCars extends Component {
         this.props.get_trial_car(this.props.match.params.id)
     }
 
+    todo(isLogin) {
+        console.log(this)
+        if(isLogin) {
+
+        }
+        this.props.history.push('/login')
+    }
 
 
 
     render() {
+        const isLogin = this.props.currentUser.loading
         const trialCar =this.props.trialCar;
         const data = trialCar.payload;
-        console.log(trialCar)
         if (trialCar.loading) {
             return (
                 <div className="trial-car">
@@ -68,7 +75,7 @@ class TrialCars extends Component {
                             <h4>经销商信息</h4>
                         </div>
 
-                        <Button type="primary"  >抢订试驾</Button>
+                        <Button type="primary" onClick = {() => this.todo(isLogin)} >抢订试驾</Button>
                     </div>
                 </div>
 

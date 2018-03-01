@@ -1,7 +1,9 @@
 import React,{ Component } from 'react'
+import { log_in } from '../../store/login/action';
+import { connect } from 'react-redux';
 import  './Login.less'
 
-export default class Login extends Component {
+class Login extends Component {
     constructor(props){
         super(props);
         this.state = {
@@ -26,19 +28,7 @@ export default class Login extends Component {
             userPassword: upwd
         })
     }
-    //是否记住密码
-    handleCheckbox(e){
-        let isChecked = e.target.checked;
-        if(isChecked){
-            this.setState({
-                isRemember: true
-            })
-        }else{
-            this.setState({
-                isRemember: false
-            })
-        }
-    }
+
     //点击登录按钮，触发后台接口提供的验证，对数据的处理等方法
     handleClick(){
         if(this.state.userName === ""||this.state.userName === null){
@@ -67,25 +57,19 @@ export default class Login extends Component {
                 <div className="login-title">登   录</div>
                 <form action="" className="form-horizontal">
                     <div className="form-group input-text">
-                        <label htmlFor="uname">账号</label>
+                        <label htmlFor="uname">电话</label>
                         <input type="text" className="form-control" name="username" id="uname" ref="uname" placeholder="手机号/用户名"
                                onChange={this.changeUsername.bind(this)}/>
                         <span className="help-block">{this.state.unameHelp}</span>
                     </div>
                     ​
                     <div className="form-group input-text">
-                        <label htmlFor="upwd">密码</label>
+                        <label htmlFor="upwd">验证码</label>
                         <input type="password" className="form-control" name="password" id="upwd" ref="upwd" placeholder="密码"
                                onChange={this.changePassword.bind(this)}/>
                         <span className="help-block">{this.state.upwdHelp}</span>
                     </div>
                     ​
-                    <div className="form-group">
-                        <label htmlFor="chk" className="check">
-                            <input type="checkbox" id="chk" checked={this.state.isRemember} onClick={this.handleCheckbox.bind(this)} />
-                            <span>记住密码</span>
-                        </label>
-                    </div>
                     ​
                     <div className="form-group">
                         <button type="button" onClick={this.handleClick.bind(this,this.state.userName,this.state.userPassword)} className="btn btn-primary login-btn">登录</button>
@@ -96,3 +80,14 @@ export default class Login extends Component {
         )
     }
 }
+
+const mapStateToProps = (state) => ({
+    currentUser: state.currentUser,
+});
+
+const mapDispatchToProps = {
+    log_in
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
+

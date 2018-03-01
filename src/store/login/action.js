@@ -19,7 +19,6 @@ export function loginErr(data) {
 
 export function log_in (obj){
     return dispatch=>{
-        dispatch(loginding());
         if (obj.userName === 'dj' && obj.password === '123') {
             console.log('登录成功')
             dispatch(loginSuccess(...obj))
