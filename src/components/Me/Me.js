@@ -9,7 +9,13 @@ export default class Me extends Component {
         super(props);
     }
 
+    componentWillMount() {
+       console.log(this.props)
+    }
+
     render() {
+        const isLogin = this.props.loading
+        const user = this.props.payload
         return (
             <div className= 'me'>
                 <NavBar
@@ -22,9 +28,8 @@ export default class Me extends Component {
                             arrow="horizontal"
                             thumb="https://zos.alipayobjects.com/rmsportal/dNuvNrtqUztHCwM.png"
                             multipleLine
-                            onClick={() => {}}
                         >
-                            Title <Brief>subtitle</Brief>
+                            {user ? user.displayName : '登录吧'} <Brief> 看车号: {user ? user.displayName : '12345'}  </Brief>
                         </Item>
                     </List>
                     <List>

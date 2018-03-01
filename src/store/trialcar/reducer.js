@@ -1,7 +1,7 @@
 import * as trialcar from './action-type';
 
 let defaultState = {
-    payload: [],
+    payload: {},
     loading: false
 };
 

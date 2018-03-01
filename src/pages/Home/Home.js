@@ -32,12 +32,14 @@ class Home extends Component {
             case 'Find':
                 return (<Find/>);
             default:
-                return (<Me/>);
+                return (<Me user = {data}/>);
         };
     }
 
     render() {
-     const subList = this.props.subList
+     const subList = this.props.subList;
+        const currentUser = this.props.currentUser;
+
         return (
             <div style={this.state.fullScreen ? { position: 'fixed', height: '100%', width: '100%', top: 0 } : { height: 400 }}>
                 <TabBar
@@ -139,7 +141,7 @@ class Home extends Component {
                             });
                         }}
                     >
-                        {this.renderContent('Me')}
+                        {this.renderContent('Me', currentUser)}
                     </TabBar.Item>
                 </TabBar>
             </div>

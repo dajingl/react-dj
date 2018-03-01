@@ -1,7 +1,7 @@
 import * as subscriptions from './action-type';
 
 let defaultState = {
-    payload: [],
+    payload: {},
     loading: false
 };
 
